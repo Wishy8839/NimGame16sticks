@@ -3,8 +3,10 @@ import time
 
 sticks = 16
 compwin = False
+Cheat_game = False
 Wins = 0
 Losts = 0
+Cheated = 0
 print("you start with 16 sticks")
 print("you can remove 1, 2, or 3 sticks each round")
 print("The person to pick the last stick loses")
@@ -70,7 +72,10 @@ while sticks != 1 or -1 or -2 or -3 or 0 :
   if Ans <= -1:
     print("Stop trying to cheat")
     sticks = random.randint(2,4)
+    Cheated +=1
+    Cheat_game = True
     compwin = True
+    Ans = 1
   if CompAns >= 16:
     CompAns = 15
     time.sleep(1)
@@ -86,6 +91,7 @@ while sticks != 1 or -1 or -2 or -3 or 0 :
     Losts += 1
     print(f"Number of times lost: {Losts}")
     print(f"Number of times won: {Wins}")
+    print(f"Number of times cheated {Cheated}")
     time.sleep(1.5)
     print("you'll play again now")
     time.sleep(1.5)
@@ -96,6 +102,12 @@ while sticks != 1 or -1 or -2 or -3 or 0 :
     Wins += 1
     print(f"Number of times lost: {Losts}")
     print(f"Number of times won: {Wins}")
+    if Cheat_game == True:
+      Cheated += 1
+      Wins -= 1
+      print(f"Number of attempts tried at cheating: {Cheated}")
+      print(f"sadly we had to take away your win :(")
+      Cheat_game == False
     time.sleep(1.5)
     print("you'll play again now")
     time.sleep(0.5)
