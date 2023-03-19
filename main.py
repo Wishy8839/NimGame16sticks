@@ -1,14 +1,17 @@
 import random
+import time
 
 sticks = 16
 compwin = False
+Wins = 0
+Losts = 0
 print("you start with 16 sticks")
 print("you can remove 1, 2, or 3 sticks each round")
 print("The person to pick the last stick loses")
 print("----------------------------------------")
 
 
-while sticks != 1 or -1 or -2 or -3 :
+while sticks != 1 or -1 or -2 or -3 or 0 :
   Ans = int(input("how many sticks do you wanna use (1, 2, or 3): "))
   if sticks == 3:
       while Ans > 2:
@@ -31,6 +34,8 @@ while sticks != 1 or -1 or -2 or -3 :
   while Ans > 3:
     print("thats more than 3, try again")
     Ans = int(input("how many sticks do you wanna use (1, 2, or 3):  "))
+  if Ans <=-1:
+    Ans*-1
   sticks = sticks - Ans
   print(f"sticks left: {sticks}")
   
@@ -62,6 +67,14 @@ while sticks != 1 or -1 or -2 or -3 :
     if CompAns == 2 or 3:
       CompAns = 1
       compwin = True
+  if Ans <= -1:
+    print("Stop trying to cheat")
+    sticks = random.randint(2,4)
+    compwin = True
+  if CompAns >= 16:
+    CompAns = 15
+    time.sleep(1)
+    print("So you tried to cheat, YOU WILL LOSE!")
   if sticks > 1:
     sticks = sticks - CompAns
     print(f"computer answer: {CompAns}")
@@ -70,8 +83,20 @@ while sticks != 1 or -1 or -2 or -3 :
     print("The computer has won!")
     sticks = 16
     compwin = False
+    Losts += 1
+    print(f"Number of times lost: {Losts}")
+    print(f"Number of times won: {Wins}")
+    time.sleep(1.5)
     print("you'll play again now")
+    time.sleep(1.5)
+    print(f"Number of sticks: {sticks}")
   elif sticks == 1:
     print("The computer has lost")
     sticks = 16
+    Wins += 1
+    print(f"Number of times lost: {Losts}")
+    print(f"Number of times won: {Wins}")
+    time.sleep(1.5)
     print("you'll play again now")
+    time.sleep(0.5)
+    print(f"Number of sticks: {sticks}")
