@@ -71,11 +71,15 @@ while sticks != 1 or -1 or -2 or -3 or 0 :
       compwin = True
   if Ans <= -1:
     print("Stop trying to cheat")
-    sticks = random.randint(2,4)
+    sticks = random.randint(3,4)
     Cheated +=1
     Cheat_game = True
     compwin = True
     Ans = 1
+    if sticks == 3:
+      CompAns = 2
+    if sticks == 4:
+      CompAns = 3
   if CompAns >= 16:
     CompAns = 15
     time.sleep(1)
@@ -102,12 +106,8 @@ while sticks != 1 or -1 or -2 or -3 or 0 :
     Wins += 1
     print(f"Number of times lost: {Losts}")
     print(f"Number of times won: {Wins}")
-    if Cheat_game == True:
-      Cheated += 1
-      Wins -= 1
-      print(f"Number of attempts tried at cheating: {Cheated}")
-      print(f"sadly we had to take away your win :(")
-      Cheat_game == False
+    print(f"Number of attempts tried at cheating: {Cheated}")
+    Cheat_game == False
     time.sleep(1.5)
     print("you'll play again now")
     time.sleep(0.5)
