@@ -95,7 +95,8 @@ while sticks != 1 or -1 or -2 or -3 or 0 :
     Losts += 1
     print(f"Number of times lost: {Losts}")
     print(f"Number of times won: {Wins}")
-    print(f"Number of times cheated {Cheated}")
+    if Cheated >= 1:
+      print(f"Number of times cheated {Cheated}")
     time.sleep(1.5)
     print("you'll play again now")
     time.sleep(1.5)
@@ -106,7 +107,8 @@ while sticks != 1 or -1 or -2 or -3 or 0 :
     Wins += 1
     print(f"Number of times lost: {Losts}")
     print(f"Number of times won: {Wins}")
-    print(f"Number of attempts tried at cheating: {Cheated}")
+    if Cheated >= 1:
+      print(f"Number of attempts tried at cheating: {Cheated}")
     Cheat_game == False
     time.sleep(1.5)
     print("you'll play again now")
